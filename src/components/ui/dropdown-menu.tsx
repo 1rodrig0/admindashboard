@@ -172,7 +172,7 @@ const Context = createContext(
   },
 );
 
-function DropdownMenuProvider({ children }: { children: React.ReactNode }) {
+export function DropdownMenuProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const value = { isOpen, setIsOpen };
