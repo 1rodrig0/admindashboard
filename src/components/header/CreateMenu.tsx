@@ -17,7 +17,6 @@ const CreateMenu: React.FC = () => {
       <button
         className="text-[#187A25] hover:text-[#4CD23D] bg-transparent px-3 py-2 rounded-md transition-colors flex items-center gap-1"
       >
-        <Plus className="h-4 w-4" />
         Crear una historia nueva
         <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>

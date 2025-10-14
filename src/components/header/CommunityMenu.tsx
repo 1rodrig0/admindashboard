@@ -1,10 +1,9 @@
 import React from 'react';
-import Link from 'next/link';
 import {
   NavigationMenuItem,
   NavigationMenuTrigger,
   NavigationMenuContent,
-  NavigationMenuContentItem,
+  NavigationMenuLink,
 } from '../ui/navigation-menu';
 import { community } from './data';
 
@@ -15,16 +14,18 @@ const CommunityMenu: React.FC = () => {
         Comunidad
       </NavigationMenuTrigger>
       <NavigationMenuContent className="w-56 bg-white border-[#165C1E] shadow-lg left-0">
-        <NavigationMenuContentItem className="text-[#187A25] p-4 font-semibold">
-          Únete a la Comunidad
-        </NavigationMenuContentItem>
-        {community.map((item) => (
-          <NavigationMenuContentItem key={item.title} className="p-0">
-            <Link href={item.href} className="block w-full p-4 text-[#187A25] hover:bg-[#4CD23D]/10 hover:text-[#4CD23D]">
-              {item.title}
-            </Link>
-          </NavigationMenuContentItem>
-        ))}
+        <div className="p-4 border-b border-gray-200 bg-gray-50">
+          <h3 className="text-lg font-bold text-[#187A25]">Únete a la Comunidad</h3>
+        </div>
+        <ul className="p-4 space-y-1">
+          {community.map((item) => (
+            <li key={item.title}>
+              <NavigationMenuLink className="block w-full p-4 text-[#187A25] hover:bg-[#4CD23D]/10 hover:text-[#4CD23D]">
+                {item.title}
+              </NavigationMenuLink>
+            </li>
+          ))}
+        </ul>
       </NavigationMenuContent>
     </NavigationMenuItem>
   );
