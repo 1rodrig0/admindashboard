@@ -4,13 +4,14 @@ import {
   NavigationMenuTrigger,
   NavigationMenuContent,
   NavigationMenuLink,
-} from '../ui/navigation-menu';
-import { community } from './data';
+} from '../../ui/navigation-menu';
+import { community } from '../data';
+import styles from '../styles/header.module.css';
 
 const CommunityMenu: React.FC = () => {
   return (
     <NavigationMenuItem>
-      <NavigationMenuTrigger className="text-[#187A25] hover:text-[#4CD23D] data-[state=open]:bg-[#2C8E2C]/10 bg-transparent">
+      <NavigationMenuTrigger className={`text-[#187A25] hover:text-[#4CD23D] data-[state=open]:bg-[#2C8E2C]/10 bg-transparent ${styles.menuText}`}>
         Comunidad
       </NavigationMenuTrigger>
       <NavigationMenuContent className="w-56 bg-white border-[#165C1E] shadow-lg left-0">

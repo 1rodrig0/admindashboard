@@ -16,10 +16,11 @@ import {
   DropdownMenuProvider,
 } from '../ui/dropdown-menu';
 import { Menu, Search } from 'lucide-react'; // Assuming lucide-react is installed via shadcn
-import GenreMenu from './GenreMenu';
-import CommunityMenu from './CommunityMenu';
-import CreateMenu from './CreateMenu';
+import GenreMenu from './components/GenreMenu';
+import CommunityMenu from './components/CommunityMenu';
+import CreateMenu from './components/CreateMenu';
 import { genres, community, createOptions } from './data';
+import styles from './styles/header.module.css';
 
 interface MenuItem {
   title: string;
@@ -28,7 +29,7 @@ interface MenuItem {
 
 const Header: React.FC = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent px-4 py-3 md:px-6 lg:px-8">
+    <header className={styles.header}>
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
         {/* Logo - Left */}
         <div className="flex items-center space-x-4">
@@ -69,12 +70,12 @@ const Header: React.FC = () => {
         {/* Right Actions - Desktop */}
         <div className="hidden md:flex items-center space-x-4">
           <CreateMenu />
-          <Button variant="outline" asChild className="border-[#187A25] text-[#187A25] hover:bg-[#4CD23D] hover:text-white">
+          <Button variant="outline" asChild className={`border-[#187A25] text-[#187A25] hover:bg-[#4CD23D] hover:text-white ${styles.buttonText}`}>
             <Link href="/login">
               Iniciar sesión
             </Link>
           </Button>
-          <Button variant="outline" asChild className="border-[#187A25] text-[#187A25] hover:bg-[#4CD23D] hover:text-white">
+          <Button variant="outline" asChild className={`border-[#187A25] text-[#187A25] hover:bg-[#4CD23D] hover:text-white ${styles.buttonText}`}>
             <Link href="/register">
               Registrate
             </Link>
