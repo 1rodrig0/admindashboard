@@ -4,18 +4,18 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import { genres } from '../data';
-import styles from '../styles/header.module.css';
+import styles from './styles/GenreMenu.module.css';
 
 const GenreMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div
-      className="relative"
+      className={styles.container}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <button className={`${styles.menuButton} ${styles.exploraText}`}>
+      <button className={styles.menuButton}>
         Explora
         <ChevronDown className={`${styles.chevronIcon} ${isOpen ? styles.chevronIconOpen : ''}`} />
       </button>

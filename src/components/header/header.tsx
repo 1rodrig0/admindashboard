@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import logo from '../../../public/logoCompleto.png'; // Use first asset as logo
+import logo from '../../../public/logoCompleto.png';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -15,7 +15,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuProvider,
 } from '../ui/dropdown-menu';
-import { Menu, Search } from 'lucide-react'; // Assuming lucide-react is installed via shadcn
+import { Menu, Search } from 'lucide-react';
 import GenreMenu from './components/GenreMenu';
 import CommunityMenu from './components/CommunityMenu';
 import CreateMenu from './components/CreateMenu';
@@ -30,25 +30,25 @@ interface MenuItem {
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
-      <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
+      <div className={styles.container}>
         {/* Logo - Left */}
-        <div className="flex items-center space-x-4">
+        <div className={styles.logoContainer}>
           <Link href="/">
             <Image
               src={logo}
               alt="Comunidad Lectora Bolivia"
               width={120}
               height={40}
-              className="object-contain"
+              className={styles.logo}
               priority
             />
           </Link>
         </div>
 
         {/* Desktop Navigation - Hidden on Mobile */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className={styles.desktopNav}>
           <NavigationMenu>
-            <NavigationMenuList className="space-x-8">
+            <NavigationMenuList className={styles.navList}>
               <GenreMenu />
               <CommunityMenu />
             </NavigationMenuList>
@@ -56,26 +56,26 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Search - Center, Hidden on Small Mobile */}
-        <div className="flex-1 max-w-md mx-4 hidden sm:flex">
-          <div className="relative w-full">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#3F875F] h-4 w-4" />
+        <div className={styles.searchContainer}>
+          <div className={styles.searchWrapper}>
+            <Search className={styles.searchIcon} />
             <Input
               type="search"
               placeholder="Buscar historias, autores bolivianos..."
-              className="pl-10 pr-4 py-2 border-[#2C8E2C] focus:border-[#4CD23D] focus:ring-[#4CD23D] text-[#187A25]"
+              className={styles.searchInput}
             />
           </div>
         </div>
 
         {/* Right Actions - Desktop */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className={styles.actionsContainer}>
           <CreateMenu />
-          <Button variant="outline" asChild className={`border-[#187A25] text-[#187A25] hover:bg-[#4CD23D] hover:text-white ${styles.buttonText}`}>
+          <Button variant="outline" asChild className={`${styles.button} ${styles.buttonText}`}>
             <Link href="/login">
               Iniciar sesión
             </Link>
           </Button>
-          <Button variant="outline" asChild className={`border-[#187A25] text-[#187A25] hover:bg-[#4CD23D] hover:text-white ${styles.buttonText}`}>
+          <Button variant="outline" asChild className={`${styles.button} ${styles.buttonText}`}>
             <Link href="/register">
               Registrate
             </Link>
@@ -83,65 +83,65 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center">
-          <div className="flex-1 max-w-xs mr-4">
-            <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#3F875F] h-4 w-4" />
+        <div className={styles.mobileMenu}>
+          <div className={styles.mobileSearchContainer}>
+            <div className={styles.mobileSearchWrapper}>
+              <Search className={styles.searchIcon} />
               <Input
                 type="search"
                 placeholder="Buscar..."
-                className="pl-10 pr-4 py-2 border-[#2C8E2C] focus:border-[#4CD23D] focus:ring-[#4CD23D] text-[#187A25]"
+                className={styles.searchInput}
               />
             </div>
           </div>
           <DropdownMenuProvider>
-            <DropdownMenuTrigger className="text-[#187A25] hover:text-[#4CD23D] p-2 rounded-md">
-              <Menu className="h-5 w-5" />
+            <DropdownMenuTrigger className={styles.menuTrigger}>
+              <Menu className={styles.menuIcon} />
             </DropdownMenuTrigger>
-            <DropdownMenuContent floating className="w-64 bg-white border-[#165C1E] shadow-lg mr-4">
+            <DropdownMenuContent floating className={styles.dropdownContent}>
               <DropdownMenuItem asChild>
-                <Link href="/explore" className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-4 py-2">
+                <Link href="/explore" className={styles.dropdownItem}>
                   Explora
                 </Link>
               </DropdownMenuItem>
               {genres.map((item: MenuItem) => (
                 <DropdownMenuItem key={item.title} asChild>
-                  <Link href={item.href} className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-8 py-2">
+                  <Link href={item.href} className={`${styles.dropdownItem} ${styles.dropdownItemIndented}`}>
                     {item.title}
                   </Link>
                 </DropdownMenuItem>
               ))}
               <DropdownMenuItem asChild>
-                <Link href="/community" className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-4 py-2">
+                <Link href="/community" className={styles.dropdownItem}>
                   Comunidad
                 </Link>
               </DropdownMenuItem>
               {community.map((item: MenuItem) => (
                 <DropdownMenuItem key={item.title} asChild>
-                  <Link href={item.href} className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-8 py-2">
+                  <Link href={item.href} className={`${styles.dropdownItem} ${styles.dropdownItemIndented}`}>
                     {item.title}
                   </Link>
                 </DropdownMenuItem>
               ))}
               <DropdownMenuItem asChild>
-                <Link href="/create" className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-4 py-2">
+                <Link href="/create" className={styles.dropdownItem}>
                   Crear una historia nueva
                 </Link>
               </DropdownMenuItem>
               {createOptions.map((item: MenuItem) => (
                 <DropdownMenuItem key={item.title} asChild>
-                  <Link href={item.href} className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-8 py-2">
+                  <Link href={item.href} className={`${styles.dropdownItem} ${styles.dropdownItemIndented}`}>
                     {item.title}
                   </Link>
                 </DropdownMenuItem>
               ))}
               <DropdownMenuItem asChild>
-                <Link href="/login" className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-4 py-2">
+                <Link href="/login" className={styles.dropdownItem}>
                   Iniciar sesión
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/register" className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-4 py-2">
+                <Link href="/register" className={styles.dropdownItem}>
                   Registrate
                 </Link>
               </DropdownMenuItem>
