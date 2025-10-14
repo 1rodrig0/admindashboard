@@ -6,13 +6,7 @@ import {
   NavigationMenuContent,
   NavigationMenuContentItem,
 } from '../ui/navigation-menu';
-
-const community = [
-  { title: 'Premios Comunidad Lectora', href: '/community/premios' },
-  { title: 'Eventos de Autores Bolivianos', href: '/community/eventos' },
-  { title: 'Autores Nacionales', href: '/community/autores' },
-  { title: 'Embajadores Bolivianos', href: '/community/embajadores' },
-];
+import { community } from './data';
 
 const CommunityMenu: React.FC = () => {
   return (

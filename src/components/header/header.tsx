@@ -15,29 +15,18 @@ import {
   DropdownMenuTrigger,
   DropdownMenuProvider,
 } from '../ui/dropdown-menu';
-import { Menu, Search, Plus } from 'lucide-react'; // Assuming lucide-react is installed via shadcn
+import { Menu, Search } from 'lucide-react'; // Assuming lucide-react is installed via shadcn
 import GenreMenu from './GenreMenu';
 import CommunityMenu from './CommunityMenu';
+import CreateMenu from './CreateMenu';
+import { genres, community, createOptions } from './data';
+
+interface MenuItem {
+  title: string;
+  href: string;
+}
 
 const Header: React.FC = () => {
-  const genres = [
-    { title: 'Romance', href: '/genres/romance' },
-    { title: 'Fantasía', href: '/genres/fantasia' },
-    { title: 'Literatura Boliviana', href: '/genres/literatura-boliviana' },
-    { title: 'Novela Juvenil', href: '/genres/novela-juvenil' },
-    { title: 'Ciencia Ficción', href: '/genres/ciencia-ficcion' },
-    { title: 'Terror', href: '/genres/terror' },
-    { title: 'Poesía', href: '/genres/poesia' },
-    { title: 'Clásicos', href: '/genres/clasicos' },
-  ];
-
-  const community = [
-    { title: 'Premios Comunidad Lectora', href: '/community/premios' },
-    { title: 'Eventos de Autores Bolivianos', href: '/community/eventos' },
-    { title: 'Autores Nacionales', href: '/community/autores' },
-    { title: 'Embajadores Bolivianos', href: '/community/embajadores' },
-  ];
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md border-b border-gray-200 px-4 py-3 md:px-6 lg:px-8">
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
@@ -79,12 +68,7 @@ const Header: React.FC = () => {
 
         {/* Right Actions - Desktop */}
         <div className="hidden md:flex items-center space-x-4">
-          <Button variant="ghost" asChild className="text-[#187A25] hover:text-[#4CD23D] hover:bg-[#2C8E2C]/10">
-            <Link href="/create">
-              <Plus className="h-4 w-4 mr-2" />
-              Crear una historia nueva
-            </Link>
-          </Button>
+          <CreateMenu />
           <Button variant="outline" asChild className="border-[#187A25] text-[#187A25] hover:bg-[#4CD23D] hover:text-white">
             <Link href="/login">
               Iniciar sesión
@@ -119,7 +103,7 @@ const Header: React.FC = () => {
                   Explora
                 </Link>
               </DropdownMenuItem>
-              {genres.map((item) => (
+              {genres.map((item: MenuItem) => (
                 <DropdownMenuItem key={item.title} asChild>
                   <Link href={item.href} className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-8 py-2">
                     {item.title}
@@ -131,7 +115,7 @@ const Header: React.FC = () => {
                   Comunidad
                 </Link>
               </DropdownMenuItem>
-              {community.map((item) => (
+              {community.map((item: MenuItem) => (
                 <DropdownMenuItem key={item.title} asChild>
                   <Link href={item.href} className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-8 py-2">
                     {item.title}
@@ -143,6 +127,13 @@ const Header: React.FC = () => {
                   Crear una historia nueva
                 </Link>
               </DropdownMenuItem>
+              {createOptions.map((item: MenuItem) => (
+                <DropdownMenuItem key={item.title} asChild>
+                  <Link href={item.href} className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-8 py-2">
+                    {item.title}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
               <DropdownMenuItem asChild>
                 <Link href="/login" className="text-[#187A25] hover:bg-[#4CD23D]/10 block w-full text-left px-4 py-2">
                   Iniciar sesión
