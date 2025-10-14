@@ -1,11 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import '@/modules/landing/styles/animations.css'; // Import custom animations
 
+import libro from './assets/libro-de-educacion.png';
+import chat from './assets/globos-de-texto.png';
+import grupo from './assets/grupo.png';
+
 const Landing: React.FC = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-[#F0F8F0] to-white flex items-center justify-center py-12 px-4">
+    <section className="min-h-screen bg-gradient-to-b from-[#F0F8F0] to-white flex items-center justify-center py-12 px-4 pt-20">
       <div className="max-w-7xl mx-auto text-center">
         <div className="space-y-6">
           <h1 className="text-5xl md:text-6xl font-bold text-[#165C1E] leading-tight fade-in-up">
@@ -31,21 +36,39 @@ const Landing: React.FC = () => {
             </Link>
           </div>
         </div>
-        {/* Placeholder for illustrations - replace with actual images/SVGs */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto opacity-60">
+        {/* Illustrations with actual images */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="flex justify-center bounce-in delay-1">
-            <div className="w-24 h-24 bg-[#4CD23D]/20 rounded-full flex items-center justify-center pulse-glow">
-              <span className="text-[#187A25] font-semibold">📖</span>
+            <div className="w-24 h-24 bg-[#4CD23D]/20 rounded-full flex items-center justify-center pulse-glow p-2">
+              <Image
+                src={libro}
+                alt="Libro de educación"
+                width={48}
+                height={48}
+                className="object-contain"
+              />
             </div>
           </div>
           <div className="flex justify-center bounce-in delay-2">
-            <div className="w-24 h-24 bg-[#4CD23D]/20 rounded-full flex items-center justify-center pulse-glow">
-              <span className="text-[#187A25] font-semibold">💬</span>
+            <div className="w-24 h-24 bg-[#4CD23D]/20 rounded-full flex items-center justify-center pulse-glow p-2">
+              <Image
+                src={chat}
+                alt="Globos de texto"
+                width={48}
+                height={48}
+                className="object-contain"
+              />
             </div>
           </div>
           <div className="flex justify-center bounce-in delay-3">
-            <div className="w-24 h-24 bg-[#4CD23D]/20 rounded-full flex items-center justify-center pulse-glow">
-              <span className="text-[#187A25] font-semibold">👥</span>
+            <div className="w-24 h-24 bg-[#4CD23D]/20 rounded-full flex items-center justify-center pulse-glow p-2">
+              <Image
+                src={grupo}
+                alt="Grupo"
+                width={48}
+                height={48}
+                className="object-contain"
+              />
             </div>
           </div>
         </div>

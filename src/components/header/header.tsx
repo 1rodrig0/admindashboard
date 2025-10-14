@@ -28,7 +28,7 @@ interface MenuItem {
 
 const Header: React.FC = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md border-b border-gray-200 px-4 py-3 md:px-6 lg:px-8">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent px-4 py-3 md:px-6 lg:px-8">
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
         {/* Logo - Left */}
         <div className="flex items-center space-x-4">
