@@ -1,0 +1,140 @@
+.section {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #F0F8F0, white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  padding-top: 5rem;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #165C1E;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3.75rem;
+  }
+}
+
+.titleBlock {
+  display: block;
+}
+
+.titleSecondary {
+  color: #187A25;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #3F875F;
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .buttonsContainer {
+    flex-direction: row;
+  }
+}
+
+.primaryButton {
+  background: #187A25;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+  text-decoration: none;
+}
+
+.primaryButton:hover {
+  background: #4CD23D;
+}
+
+.secondaryButton {
+  border: 2px solid #187A25;
+  color: #187A25;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.secondaryButton:hover {
+  background: #187A25;
+  color: white;
+}
+
+.arrowIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.illustrationsGrid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .illustrationsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.illustrationWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.illustrationCircle {
+  width: 6rem;
+  height: 6rem;
+  background: rgba(76, 210, 61, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.illustrationImage {
+  object-fit: contain;
+}
