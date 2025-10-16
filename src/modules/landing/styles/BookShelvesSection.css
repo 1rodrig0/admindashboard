@@ -1,6 +1,22 @@
+:root {
+  --book-shelves-bg: #f9f9f9;
+  --book-shelves-text: #165C1E;
+  --book-shelves-highlight: #187A25;
+  --book-shelves-shelf-bg: #8b4513;
+  --book-shelves-shelf-border: #654321;
+}
+
+.dark {
+  --book-shelves-bg: #1a1a1a;
+  --book-shelves-text: #e0e0e0;
+  --book-shelves-highlight: #4CD23D;
+  --book-shelves-shelf-bg: #654321;
+  --book-shelves-shelf-border: #8b4513;
+}
+
 .book-shelves-section {
   padding: 60px 20px;
-  background-color: #f9f9f9;
+  background-color: var(--book-shelves-bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,8 +43,8 @@
 .shelf {
   width: 200px;
   height: 600px;
-  background-color: #8b4513;
-  border: 5px solid #654321;
+  background-color: var(--book-shelves-shelf-bg);
+  border: 5px solid var(--book-shelves-shelf-border);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -150,7 +166,7 @@
 .shelf-divider h1 {
   font-size: 2rem;
   font-weight: bold;
-  color: #165C1E;
+  color: var(--book-shelves-text);
   margin-bottom: 1rem;
   line-height: 1.25;
 }
@@ -166,12 +182,12 @@
 }
 
 .shelf-divider h1 .highlight {
-  color: #187A25;
+  color: var(--book-shelves-highlight);
 }
 
 .shelf-divider p {
   font-size: 1.25rem;
-  color: #3F875F;
+  color: var(--book-shelves-text);
   max-width: 48rem;
   margin: 0 auto;
   line-height: 1.625;
