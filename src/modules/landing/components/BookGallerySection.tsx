@@ -2,6 +2,7 @@
 
 import React from 'react';
 import DomeGallery from '../../../components/DomeGallery.jsx';
+import { useTheme } from '../../../lib/theme-provider.tsx';
 import '@/modules/landing/styles/BookGallerySection.css'; // Import custom styles
 
 import LIBRO3 from '../assets/El violín del diablo.jpeg';
@@ -16,8 +17,9 @@ import LIBRO8 from '../assets/descargar (1).jpeg';
 
 
 const BookGallerySection: React.FC = () => {
+  const { theme } = useTheme();
   const bookImages = [
-  
+
     { src: LIBRO1.src, alt: 'Libro 1' },
     { src: LIBRO2.src, alt: 'Libro 2' },
     { src: LIBRO3.src, alt: 'Libro 3' },
@@ -26,7 +28,7 @@ const BookGallerySection: React.FC = () => {
     { src: LIBRO6.src, alt: 'Libro 6' },
     { src: LIBRO7.src, alt: 'Libro 7' },
     { src: LIBRO8.src, alt: 'Libro 8' },
-    
+
     { src: LIBRO1.src, alt: 'Libro 1' },
     { src: LIBRO2.src, alt: 'Libro 2' },
     { src: LIBRO3.src, alt: 'Libro 3' },
@@ -36,6 +38,8 @@ const BookGallerySection: React.FC = () => {
     { src: LIBRO7.src, alt: 'Libro 7' },
     { src: LIBRO8.src, alt: 'Libro 8' },
   ];
+
+  const overlayBlurColor = theme === 'dark' ? '#1a1a1a' : '#F0F8F0';
 
   return (
     <section className="book-gallery-section">
@@ -47,7 +51,7 @@ const BookGallerySection: React.FC = () => {
             grayscale={false}
             imageBorderRadius="20px"
             openedImageBorderRadius="30px"
-            overlayBlurColor="#F0F8F0"
+            overlayBlurColor={overlayBlurColor}
           />
         </div>
       </div>
