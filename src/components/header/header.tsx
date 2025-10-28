@@ -38,7 +38,7 @@ const Header: React.FC = () => {
               src={logo}
               alt="Comunidad Lectora Bolivia"
               width={120}
-              height={40}
+              height={25}
               className={styles.logo}
               priority
             />

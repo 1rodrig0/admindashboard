@@ -185,6 +185,8 @@
 
 .logo {
   object-fit: contain;
+  margin-top: -8px;
+  margin-bottom: -8px;
 }
 
 .desktopNav {
