@@ -16,7 +16,7 @@ const CreateMenu: React.FC = () => {
       onMouseLeave={() => setIsOpen(false)}
     >
       <button className={styles.menuButton}>
-        Crear una historia nueva
+        Ecribir
         <ChevronDown className={`${styles.chevronIcon} ${isOpen ? styles.chevronIconOpen : ''}`} />
       </button>
       {isOpen && (
