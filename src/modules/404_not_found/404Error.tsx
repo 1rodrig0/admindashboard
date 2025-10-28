@@ -8,9 +8,10 @@ import './styles/404animations.css';
 
 const Error404: React.FC = () => {
   const [showImage, setShowImage] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowImage(true), 2000); // Show image after 2 seconds
+    const timer = setTimeout(() => setShowImage(true), 500); // Show image after 0.5 seconds
     return () => clearTimeout(timer);
   }, []);
   return (
@@ -55,6 +56,8 @@ const Error404: React.FC = () => {
               width={400}
               height={300}
               className="rounded-lg shadow-lg object-cover object-top"
+              onLoad={() => setImageLoaded(true)}
+              style={{ opacity: imageLoaded ? 1 : 0, transition: 'opacity 0.5s ease-in-out' }}
             />
           </div>
         )}

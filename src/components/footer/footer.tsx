@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="mt-6 pt-6 border-t border-[#2C8E2C] text-center">
           <p className="text-[#3F875F] text-sm">
-            © 2024 Comunidad Lectora Bolivia. Todos los derechos reservados.
+            © 2025 Comunidad Lectora Bolivia. Todos los derechos reservados.
           </p>
         </div>
       </div>
