@@ -4,7 +4,6 @@ import logo from '../../../public/minilogo.png';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import { ThemeToggle } from '../ui/theme-toggle';
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -71,7 +70,6 @@ const Header: React.FC = () => {
         {/* Right Actions - Desktop */}
         <div className={styles.actionsContainer}>
           <CreateMenu />
-          <ThemeToggle />
           <Button variant="outline" asChild className={`${styles.button} ${styles.buttonText}`}>
             <Link href="/login">
               Iniciar sesión
