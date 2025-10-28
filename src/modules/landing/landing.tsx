@@ -2,6 +2,7 @@ import React from 'react';
 import HeroSection from './components/HeroSection';
 import BookGallerySection from './components/BookGallerySection';
 import BookShelvesSection from './components/BookShelvesSection';
+import ComentSection from './components/comentSection';
 
 const Landing: React.FC = () => {
   return (
@@ -9,6 +10,7 @@ const Landing: React.FC = () => {
       <HeroSection />
       <BookGallerySection />
       <BookShelvesSection />
+      <ComentSection />
     </>
   );
 };
