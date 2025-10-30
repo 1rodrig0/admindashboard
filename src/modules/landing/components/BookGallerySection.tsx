@@ -2,7 +2,7 @@
 
 import React from 'react';
 import DomeGallery from '../../../components/DomeGallery.jsx';
-import { useTheme } from '../../../lib/theme-provider.tsx';
+import { useTheme } from '../../../lib/theme-provider.jsx';
 import '@/modules/landing/styles/BookGallerySection.css'; // Import custom styles
 
 import LIBRO3 from '../assets/El violín del diablo.jpeg';
