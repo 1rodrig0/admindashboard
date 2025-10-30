@@ -4,14 +4,14 @@ interface MenuItem {
 }
 
 export const genres: MenuItem[] = [
-  { title: 'Romance', href: '/genres/romance' },
-  { title: 'Fantasía', href: '/genres/fantasia' },
-  { title: 'Literatura Boliviana', href: '/genres/literatura-boliviana' },
-  { title: 'Novela Juvenil', href: '/genres/novela-juvenil' },
-  { title: 'Ciencia Ficción', href: '/genres/ciencia-ficcion' },
-  { title: 'Terror', href: '/genres/terror' },
-  { title: 'Poesía', href: '/genres/poesia' },
-  { title: 'Clásicos', href: '/genres/clasicos' },
+  { title: 'Romance', href: '/biblioteca?genre=romance' },
+  { title: 'Fantasía', href: '/biblioteca?genre=fantasia' },
+  { title: 'Literatura Boliviana', href: '/biblioteca?genre=literatura-boliviana' },
+  { title: 'Novela Juvenil', href: '/biblioteca?genre=novela-juvenil' },
+  { title: 'Ciencia Ficción', href: '/biblioteca?genre=ciencia-ficcion' },
+  { title: 'Terror', href: '/biblioteca?genre=terror' },
+  { title: 'Poesía', href: '/biblioteca?genre=poesia' },
+  { title: 'Clásicos', href: '/biblioteca?genre=clasicos' },
 ];
 
 export const community: MenuItem[] = [
