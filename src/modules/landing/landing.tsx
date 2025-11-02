@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
+import HeroSection from './components/HeroSection';
+import BookGallerySection from './components/BookGallerySection';
+import BookShelvesSection from './components/BookShelvesSection';
+import ComentSection from './components/comentSection';
 
-function landing() {
+const Landing: React.FC = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <HeroSection />
+      <BookGallerySection />
+      <BookShelvesSection />
+      <ComentSection />
+    </>
+  );
+};
 
-export default landing
+export default Landing;
