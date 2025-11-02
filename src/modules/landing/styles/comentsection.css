@@ -19,7 +19,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 4rem 6rem;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     background: var(--coment-bg);
     color: var(--coment-text);
