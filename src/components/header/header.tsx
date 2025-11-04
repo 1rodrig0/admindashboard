@@ -85,7 +85,7 @@ const Header: React.FC = () => {
                 <Link href="/login">Iniciar sesión</Link>
               </Button>
               <Button variant="outline" asChild className={`${styles.button} ${styles.buttonText}`}>
-                <Link href="/register">Registrate</Link>
+                <Link href="/login">Registrate</Link>
               </Button>
             </>
           )}
@@ -154,7 +154,7 @@ const Header: React.FC = () => {
                     <Link href="/login" className={styles.dropdownItem}>Iniciar sesión</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/register" className={styles.dropdownItem}>Registrate</Link>
+                    <Link href="/login" className={styles.dropdownItem}>Registrate</Link>
                   </DropdownMenuItem>
                 </>
               )}

@@ -4,8 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { auth, googleProvider, setAuthPersistence } from '@/lib/firebase';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import '@/styles/theme.css';
-import '@/styles/login.css';
+import './styles/login.css';
 
 type Status = 'idle' | 'loading' | 'error';
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
