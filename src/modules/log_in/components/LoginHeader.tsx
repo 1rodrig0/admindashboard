@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/LoginHeader.css';
+import '../styles/login.css';
 
 export default function LoginHeader() {
   return (

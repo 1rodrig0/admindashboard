@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/LoginCard.css';
+import '../styles/login.css';
 
 interface LoginCardProps {
   children: React.ReactNode;

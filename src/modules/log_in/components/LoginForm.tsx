@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { auth, googleProvider, setAuthPersistence } from '@/lib/firebase';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import '../styles/LoginForm.css';
+import Image from 'next/image';
+import libroAbierto from '../assets/icons/libro-abierto.png';
+import libroCerrado from '../assets/icons/libro.png';
+import '../styles/login.css';
 
 type Status = 'idle' | 'loading' | 'error';
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -79,7 +82,7 @@ export default function LoginForm({ redirectParam }: LoginFormProps) {
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="tucorreo@emi.edu.bo"
+          placeholder="tucorreo@gmail.com"
           aria-invalid={status === 'error' && !EMAIL_REGEX.test(email)}
           required
         />
@@ -104,8 +107,14 @@ export default function LoginForm({ redirectParam }: LoginFormProps) {
           type="button"
           className="toggle-pass"
           onClick={() => setShowPass((s) => !s)}
+          aria-label={showPass ? 'Ocultar contraseña' : 'Mostrar contraseña'}
         >
-          {showPass ? 'Ocultar' : 'Ver'}
+          <Image
+            src={showPass ? libroAbierto : libroCerrado}
+            alt={showPass ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+            width={20}
+            height={20}
+          />
         </button>
       </div>
 

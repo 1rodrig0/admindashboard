@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import LoginShell from './components/LoginShell';
 import LoginCard from './components/LoginCard';
 import LoginHeader from './components/LoginHeader';
@@ -13,11 +14,13 @@ export default function Login() {
   const redirectParam = params.get('redirect') || '/';
 
   return (
-    <LoginShell>
-      <LoginCard>
-        <LoginHeader />
-        <LoginForm redirectParam={redirectParam} />
-      </LoginCard>
-    </LoginShell>
+    <div>
+      <LoginShell>
+        <LoginCard>
+          <LoginHeader />
+          <LoginForm redirectParam={redirectParam} />
+        </LoginCard>
+      </LoginShell>
+    </div>
   );
 }

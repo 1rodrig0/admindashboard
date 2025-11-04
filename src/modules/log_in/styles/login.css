@@ -3,6 +3,8 @@
     display: grid;
     place-items: center;
     padding: clamp(16px, 3vw, 40px);
+    position: relative;
+    z-index: 1;
   }
   
   .login-card {
@@ -113,6 +115,9 @@
     transform: translateY(-50%);
     border: none; background: transparent; color: var(--muted);
     cursor: pointer; font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .row {
