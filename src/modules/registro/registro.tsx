@@ -1,17 +1,37 @@
-import React from 'react'
+
+// src/modules/registro/registro.tsx
+"use client";
+
+import React, { useState } from "react";
+import RegisterHeader from "./components/RegisterHeader";
+import RegisterForm from "./components/RegisterForm";
+import styles from "./styles/registro.module.css";
+
+export default function RegisterPage() {
+  const [loading, setLoading] = useState(false);
+  const [oauthLoading, setOauthLoading] = useState(false);
+
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 
-function registro() {
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <main className={styles.container} aria-busy={loading || oauthLoading}>
       <Header />
-      <main className="flex-1">
-        {/* Contenido del registro aquí */}
-      </main>
-      <Footer />
-    </div>
+      {/* Decoración animada */}
+      <div className={styles.bgGlow} aria-hidden />
+      <div className={styles.bgOrbs} aria-hidden>
+        <span />
+        <span />
+        <span />
+        <Footer />
+      </div>
   )
 }
-
-export default registro
+      <section className={styles.card} role="region" aria-label="Formulario de registro">
+        <RegisterHeader />
+        <RegisterForm loading={loading} oauthLoading={oauthLoading} setLoading={setLoading} setOauthLoading={setOauthLoading} />
+      </section>
+    </main>
+  );
+}
