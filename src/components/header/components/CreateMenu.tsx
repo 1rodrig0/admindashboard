@@ -2,11 +2,16 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, Plus } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { createOptions } from '../data';
 import styles from './styles/CreateMenu.module.css';
 
-const CreateMenu: React.FC = () => {
+type Props = {
+  isAuthenticated: boolean;
+  getHref: (href: string) => string;
+};
+
+const CreateMenu: React.FC<Props> = ({ isAuthenticated, getHref }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -16,21 +21,25 @@ const CreateMenu: React.FC = () => {
       onMouseLeave={() => setIsOpen(false)}
     >
       <button className={styles.menuButton}>
-        Ecribir
+        Escribir
         <ChevronDown className={`${styles.chevronIcon} ${isOpen ? styles.chevronIconOpen : ''}`} />
       </button>
+
       {isOpen && (
         <div className={styles.dropdownContainer}>
           <div className={styles.dropdownHeader}>
-            <h3 className={styles.dropdownTitle}>Opciones de Creación</h3>
+            <h3 className={styles.dropdownTitle}>
+              {isAuthenticated ? 'Opciones de creación' : 'Inicia sesión para crear'}
+            </h3>
           </div>
+
           <div className={styles.dropdownList}>
             {createOptions.map((item) => (
               <Link
                 key={item.title}
-                href={item.href}
+                href={getHref(item.href)}
                 className={styles.dropdownLink}
-                onClick={() => setIsOpen(false)}
+                // No hace falta onClick especial; Link ya te manda al login con redirect si no hay sesión
               >
                 {item.title}
               </Link>
