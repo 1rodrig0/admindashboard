@@ -148,6 +148,13 @@
     border: 1px solid rgba(21,78,36,0.20);
   }
   .btn-ghost:hover { background: rgba(21,78,36,0.06); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(21,78,36,0.20);
+  }
+  .btn-outline:hover { background: rgba(21,78,36,0.06); }
   
   .divider {
     display: grid; grid-auto-flow: column; align-items: center; gap: 10px;

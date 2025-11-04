@@ -5,7 +5,7 @@ import { ThemeProvider } from '@/lib/theme-provider'; // 👈 importa tu provide
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider defaultTheme="system" storageKey="theme">
+    <ThemeProvider>
       <AuthProvider>
         {children}
       </AuthProvider>

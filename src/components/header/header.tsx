@@ -8,12 +8,14 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { NavigationMenu, NavigationMenuList } from '../ui/navigation-menu';
 import {
+  DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuProvider,
 } from '../ui/dropdown-menu';
-import { Menu, Search } from 'lucide-react';
+import { Menu, Search, LogOut, User } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import GenreMenu from './components/GenreMenu';
 import CommunityMenu from './components/CommunityMenu';
 import CreateMenu from './components/CreateMenu';
@@ -29,11 +31,15 @@ interface MenuItem {
 }
 
 const Header: React.FC = () => {
-  const { user } = useAuth(); // <- estado de Firebase
+  const { user, logout } = useAuth(); // <- estado de Firebase
 
   // Si no hay sesión, manda a /login?redirect=<destino>
   const getHref = (href: string) =>
     user ? href : `/login?redirect=${encodeURIComponent(href)}`;
+
+  const handleLogout = async () => {
+    await logout();
+  };
 
   return (
     <header className={styles.header}>
@@ -79,7 +85,30 @@ const Header: React.FC = () => {
           {/* 👇 Pasamos si está autenticado y la función getHref */}
           <CreateMenu isAuthenticated={!!user} getHref={getHref} />
 
-          {!user && (
+          {user ? (
+            <DropdownMenuProvider>
+              <DropdownMenuTrigger asChild>
+                <button className="relative h-8 w-8 rounded-full border-none bg-transparent hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage src={user.photoURL || ''} alt={user.displayName || 'Usuario'} />
+                    <AvatarFallback>{user.displayName?.charAt(0) || user.email?.charAt(0) || 'U'}</AvatarFallback>
+                  </Avatar>
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent floating className="w-56">
+                <DropdownMenuItem asChild>
+                  <Link href="/perfil" className="flex items-center">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Perfil</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout} className="flex items-center">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Cerrar sesión</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenuProvider>
+          ) : (
             <>
               <Button variant="outline" asChild className={`${styles.button} ${styles.buttonText}`}>
                 <Link href="/login">Iniciar sesión</Link>
