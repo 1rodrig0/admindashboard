@@ -22,6 +22,7 @@ interface FiltersPanelProps {
   onToggleGenre: (g: string) => void;
   onToggleTag: (t: string) => void;
   onAuthor: (s: string) => void;
+  genreFromUrl?: string | null;
 }
 
 export default function FiltersPanel({
@@ -33,6 +34,7 @@ export default function FiltersPanel({
   onToggleGenre,
   onToggleTag,
   onAuthor,
+  genreFromUrl,
 }: FiltersPanelProps) {
   const [open, setOpen] = useState(true);
   return (
@@ -68,15 +70,17 @@ export default function FiltersPanel({
               />
             </div>
 
-            {/* Géneros */}
-            <div>
-              <div className={`text-sm mb-2 ${palette.muted}`}>Géneros</div>
-              <div className="flex flex-wrap gap-2">
-                {allGenres.map((g) => (
-                  <Chip key={g} label={g} active={selectedGenres.has(g)} onClick={() => onToggleGenre(g)} />
-                ))}
+            {/* Géneros - Solo mostrar si no hay género desde URL */}
+            {!genreFromUrl && (
+              <div>
+                <div className={`text-sm mb-2 ${palette.muted}`}>Géneros</div>
+                <div className="flex flex-wrap gap-2">
+                  {allGenres.map((g) => (
+                    <Chip key={g} label={g} active={selectedGenres.has(g)} onClick={() => onToggleGenre(g)} />
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Etiquetas */}
             <div>

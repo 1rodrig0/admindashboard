@@ -77,9 +77,11 @@ export default function BibliotecaPage({ genre }: BibliotecaProps) {
       const authorOk = a ? normalize(b.author).includes(a) : true;
       const genreOk = genres.size ? b.genres.some((g) => genres.has(g)) : true;
       const tagOk = tags.size ? b.tags.some((t) => tags.has(t)) : true;
-      return titleOk && authorOk && genreOk && tagOk;
+      // Si hay género desde URL, filtrar solo por ese género
+      const urlGenreOk = genre ? b.genres.some((g) => normalize(g).includes(normalize(genre))) : true;
+      return titleOk && authorOk && genreOk && tagOk && urlGenreOk;
     });
-  }, [debouncedQuery, debouncedAuthor, genres, tags]);
+  }, [debouncedQuery, debouncedAuthor, genres, tags, genre]);
 
   // Chips activos para la barra superior
   const activeChips = useMemo(() => {
@@ -101,7 +103,7 @@ export default function BibliotecaPage({ genre }: BibliotecaProps) {
           className={styles.title}
         >
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Historias{displayGenre ? ` de ${displayGenre}` : ''}</h1>
-          <p className={styles.subtitle}>Busca, filtra por género, etiqueta o autor. (Datos locales)</p>
+          <p className={styles.subtitle}>Busca, filtra por género, etiqueta o autor.</p>
         </motion.div>
 
         {/* Top bar: buscador + chips */}
@@ -131,6 +133,7 @@ export default function BibliotecaPage({ genre }: BibliotecaProps) {
             onToggleTag={(t) =>
               setTags((s) => (s.has(t) ? new Set(Array.from(s).filter((x) => x !== t)) : new Set(s).add(t)))
             }
+            genreFromUrl={genre}
           />
 
           {/* Grid de resultados */}
