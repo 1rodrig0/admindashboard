@@ -17,7 +17,6 @@ export default function Login() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
       <main className="flex-1">
         <LoginShell>
           <LoginCard>
@@ -26,7 +25,6 @@ export default function Login() {
           </LoginCard>
         </LoginShell>
       </main>
-      <Footer />
     </div>
   );
 }

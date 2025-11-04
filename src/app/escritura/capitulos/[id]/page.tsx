@@ -7,7 +7,7 @@ export default function Page({ params }: { params: { id: string } }) {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        <Capitulos />
+        <Capitulos storyId={params.id} />
       </main>
       <Footer />
     </div>

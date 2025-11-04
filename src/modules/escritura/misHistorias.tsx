@@ -4,26 +4,18 @@ import { useRouter } from "next/navigation";
 import styles from "./styles/misHistorias.module.css";
 import { motion } from "framer-motion";
 import { Edit, Eye, Trash } from "lucide-react";
+import { stories } from "./storiesData";
 
 const MisHistorias = () => {
   const router = useRouter();
 
-  const historias = [
-    {
-      id: 1,
-      titulo: "Sombras del Castillo",
-      genero: "Fantasia",
-      estado: "En curso",
-      fecha: "03/11/2025",
-    },
-    {
-      id: 2,
-      titulo: "Ecos del Silencio",
-      genero: "Drama",
-      estado: "Finalizada",
-      fecha: "20/10/2025",
-    },
-  ];
+  const historias = stories.map((story) => ({
+    id: story.id,
+    titulo: story.title,
+    genero: story.genres.join(", "),
+    estado: story.chapters.some((c) => !c.isPublished) ? "En curso" : "Finalizada",
+    fecha: new Date(story.createdAt).toLocaleDateString("es-ES"),
+  }));
 
   const handleEdit = (id: number) => {
     router.push(`/escritura/capitulos/${id}`);
