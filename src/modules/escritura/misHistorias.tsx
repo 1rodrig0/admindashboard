@@ -1,10 +1,13 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import styles from "./styles/misHistorias.module.css";
 import { motion } from "framer-motion";
 import { Edit, Eye, Trash } from "lucide-react";
 
 const MisHistorias = () => {
+  const router = useRouter();
+
   const historias = [
     {
       id: 1,
@@ -21,6 +24,10 @@ const MisHistorias = () => {
       fecha: "20/10/2025",
     },
   ];
+
+  const handleEdit = (id: number) => {
+    router.push(`/escritura/capitulos/${id}`);
+  };
 
   return (
     <main className={styles.container}>
@@ -46,7 +53,7 @@ const MisHistorias = () => {
               <button className={`${styles.btn} ${styles.view}`}>
                 <Eye size={18} /> Ver
               </button>
-              <button className={`${styles.btn} ${styles.edit}`}>
+              <button className={`${styles.btn} ${styles.edit}`} onClick={() => handleEdit(historia.id)}>
                 <Edit size={18} /> Editar
               </button>
               <button className={`${styles.btn} ${styles.delete}`}>
