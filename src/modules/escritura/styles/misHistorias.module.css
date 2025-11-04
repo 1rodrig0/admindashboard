@@ -1,10 +1,19 @@
+:root {
+  --bg: #0b1220; --surface:#111a2b; --surface-2:#0e1726; --text:#edf2ff; --muted:#a5b3d6;
+  --brand:#6ee7ff; --brand-2:#7c4dff; --ok:#3ddc97; --warn:#ffb020; --stroke: rgba(255,255,255,0.08);
+}
+@media (prefers-color-scheme: light){
+  :root{ --bg:#f6f8ff; --surface:#ffffff; --surface-2:#f1f5ff; --text:#0e1726; --muted:#4b5563; --stroke:rgba(0,0,0,0.08); }
+}
+
 .container {
     padding: 8rem 2rem 3rem;
-    background: radial-gradient(circle at top left, #3a0ca3, #7209b7, #f72585);
+    background: var(--bg);
     min-height: 100vh;
-    color: #fff;
+    color: var(--text);
     overflow-x: hidden;
     animation: fadeIn 0.8s ease-in;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   }
   
   .title {
@@ -26,7 +35,8 @@
   }
   
   .card {
-    background: rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, var(--surface), var(--surface-2));
+    border: 1px solid var(--stroke);
     border-radius: 1.5rem;
     padding: 1.5rem;
     box-shadow: 0 0 15px rgba(247, 37, 133, 0.4);
