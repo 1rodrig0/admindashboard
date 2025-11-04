@@ -1,15 +1,14 @@
-import Header from "@/components/header/header";
-import Footer from "@/components/footer/footer";
+"use client";
+
 import Landing from "@/modules/landing/landing";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Home() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-1">
-        <Landing />
-      </main>
-      <Footer />
-    </div>
-  );
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <div>Loading...</div>; // Or a proper loading component
+  }
+
+  return <Landing />;
 }
