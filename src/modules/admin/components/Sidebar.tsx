@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getDashboardStats, type DashboardStats } from "@/lib/services";
 import styles from "../styles/sidebar.module.css";
 
 interface SidebarProps {
@@ -10,6 +11,31 @@ interface SidebarProps {
 
 export default function Sidebar({ currentView, onViewChange }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [todayStats, setTodayStats] = useState({
+    users: 0,
+    books: 0,
+    unreadNotifications: 0,
+  });
+
+  useEffect(() => {
+    // Cargar estadísticas del día
+    const loadTodayStats = async () => {
+      try {
+        const stats: DashboardStats = await getDashboardStats();
+        setTodayStats({
+          users: stats.newUsersToday,
+          books: stats.booksThisWeek,
+          unreadNotifications: stats.unreadNotifications ?? 0,
+        });
+      } catch (error) {
+        console.error("Error cargando estadísticas:", error);
+      }
+    };
+
+    loadTodayStats();
+    const interval = setInterval(loadTodayStats, 60000); // Actualizar cada minuto
+    return () => clearInterval(interval);
+  }, []);
 
   const menuItems = [
     {
@@ -87,6 +113,12 @@ export default function Sidebar({ currentView, onViewChange }: SidebarProps) {
       action: () => console.log("Nuevo libro"),
     },
   ];
+
+  const calculateProgress = () => {
+    const total = todayStats.users + todayStats.books;
+    const goal = 100; // Meta diaria ejemplo
+    return Math.min((total / goal) * 100, 100);
+  };
 
   return (
     <aside className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ""}`}>
@@ -166,19 +198,28 @@ export default function Sidebar({ currentView, onViewChange }: SidebarProps) {
           </div>
           <div className={styles.statsGrid}>
             <div className={styles.statItem}>
-              <span className={styles.statValue}>23</span>
+              <span className={styles.statValue}>{todayStats.users}</span>
               <span className={styles.statLabel}>Usuarios</span>
             </div>
             <div className={styles.statItem}>
-              <span className={styles.statValue}>45</span>
+              <span className={styles.statValue}>{todayStats.books}</span>
               <span className={styles.statLabel}>Libros</span>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statValue}>{todayStats.unreadNotifications}</span>
+              <span className={styles.statLabel}>Notificaciones</span>
             </div>
           </div>
           <div className={styles.statsProgress}>
             <div className={styles.progressBar}>
-              <div className={styles.progressFill} style={{ width: "68%" }}></div>
+              <div 
+                className={styles.progressFill} 
+                style={{ width: `${calculateProgress()}%` }}
+              ></div>
             </div>
-            <span className={styles.progressText}>68% del objetivo</span>
+            <span className={styles.progressText}>
+              {Math.round(calculateProgress())}% del objetivo
+            </span>
           </div>
         </div>
       )}
@@ -205,4 +246,4 @@ export default function Sidebar({ currentView, onViewChange }: SidebarProps) {
       </div>
     </aside>
   );
-} 
+}

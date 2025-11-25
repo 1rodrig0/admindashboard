@@ -22,7 +22,7 @@
 
 .addBtn {
   padding: 0.6rem 1.2rem;
-  background: #2ecc71;
+  background: #27ae60;
   color: white;
   border: none;
   border-radius: 6px;
@@ -32,7 +32,7 @@
 }
 
 .addBtn:hover {
-  background: #27ae60;
+  background: #229954;
 }
 
 .tableWrapper {
@@ -128,8 +128,8 @@
 }
 
 .editBtn:hover {
-  background: #e3f2fd;
-  border-color: #3498db;
+  background: rgba(39, 174, 96, 0.1);
+  border-color: #27ae60;
 }
 
 .deleteBtn:hover {
@@ -158,4 +158,116 @@
     height: 48px;
     font-size: 1rem;
   }
+}
+/* ... (mantén estilos existentes) ... */
+
+/* Header Actions */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  padding: 0.6rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  min-width: 250px;
+  transition: border-color 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #27ae60;
+}
+
+.filterSelect {
+  padding: 0.6rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: white;
+  cursor: pointer;
+}
+
+/* Loading & Empty States */
+.loadingContainer,
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #27ae60;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  opacity: 0.3;
+}
+
+/* Book Info */
+.bookInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bookTitle {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.bookDescription {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Status Select */
+.statusSelect {
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.statusSelect:hover {
+  opacity: 0.8;
+}
+
+/* Table Footer */
+.tableFooter {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.totalCount {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
